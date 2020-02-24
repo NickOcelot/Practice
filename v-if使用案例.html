@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+</head>
+
+<body>
+    <div id='search'>
+        <span v-if='isShow'>
+    <p>小明</p>
+    <input id='XMpointBox'    placeholder='小明' key='XM'>
+</span>
+        <span v-else>
+    <p>小红</p>
+    <input id='XHpointBox'   placeholder='小红' key='XH'>
+</span>
+        <button type="button" id='outPut' @click='isShow=!isShow'>切换考生</button>
+        <p>{{result}}</p>
+    </div>
+</body>
+
+<script src="Asset/vue.js"></script>
+<script>
+    const el = "#search";
+    const vue = new Vue({
+        el,
+        data: {
+            isShow: '',
+            point: '',
+        },
+        computed: {
+            result() {
+                let res = '';
+                if (this.point >= 90) {
+                    res = '优秀';
+                } else if (this.point >= 80) {
+                    res = '良好';
+                } else if (this.point >= 60) {
+                    res = '一般';
+                } else {
+                    res = '不及格';
+                }
+                return res;
+            }
+        },
+        methods: {},
+    })
+</script>
+
+</html>

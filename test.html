@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+</head>
+
+<body>
+    <div id='search'>
+        <input type="search" id='searchBox' v-model='searchText' @keydown.enter.once='keyUp'>
+        <button type="button" id='outPut' @click.stop='textOut'>输出</button>
+        <button type="button" id='testEvent' @click.stop='output(123,$event)'>事件</button>
+
+    </div>
+    <br/>
+    <form action='kk'>
+        <input type='submit' value='提交' @click.prevent='enter()'>
+    </form>
+</body>
+
+<script src="Asset/vue.js"></script>
+<script>
+    const el = "#search";
+    const vue = new Vue({
+        el,
+        data: {
+            searchText: ''
+        },
+        methods: {
+            divOut() {
+                console.log('divClick');
+            },
+            textOut() {
+                console.log(this.searchText);
+            },
+            output(num, event) {
+                console.log(num, event);
+            },
+            enter() {
+                console.log('inputclick');
+            },
+            keyUp() {
+                console.log('keyup');
+            }
+
+        },
+    })
+</script>
+
+</html>
